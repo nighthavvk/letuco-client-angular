@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,8 @@ import { AlertsService } from 'src/app/services/alerts/alerts.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
+
+  @ViewChild('submitButton') submitButton: ElementRef;
 
   signInForm: FormGroup;
 
@@ -37,12 +39,14 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.signInForm.valid) { return; }
+    if (this.signInForm.invalid) {
+      this.emailCtrl.markAsTouched();
+      this.passwordCtrl.markAsTouched();
+      return;
+    }
 
-    this.signIn();
-  }
+    this.submitButton.nativeElement.setAttribute('disabled', true);
 
-  signIn() {
     this.authService.signIn({
       email: this.emailCtrl.value,
       password: this.passwordCtrl.value
@@ -52,6 +56,7 @@ export class SignInComponent implements OnInit {
         this.router.navigate(['/shops']);
       },
       err => {
+        this.submitButton.nativeElement.removeAttribute('disabled');
         this.alertService.showAlertDanger(err.error.errors[0])
       }
     );

@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 
 import { ShopRoutingModule } from './shop-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { ShopsComponent } from './components/shops/shops.component';
 import { ShopItemComponent } from './components/shop-item/shop-item.component';
@@ -43,7 +44,8 @@ import { СustomersComponent } from './components/customers/customers.component'
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    ChartsModule
+    ChartsModule,
+    SharedModule
   ],
   providers: []
 })

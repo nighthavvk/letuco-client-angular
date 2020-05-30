@@ -11,25 +11,25 @@ export class AlertsService {
     private dom: DOMService
   ) { }
 
-  showAlertSuccess(text) {
-    this.showAlert({ type: 'success', text: text })
+  showAlertSuccess(text, params?) {
+    this.showAlert({ type: 'success', text: text, ...params })
   }
 
-  showAlertDanger(text) {
-    this.showAlert({ type: 'danger', text: text })
+  showAlertDanger(text, params?) {
+    this.showAlert({ type: 'danger', text: text, ...params })
   }
 
   showAlert(params): ComponentRef<AlertComponent> {
     let alert: ComponentRef<AlertComponent>;
 
-    alert = this.dom.appendComponentToBody(AlertComponent, {
+    alert = this.dom.appendComponent(AlertComponent, {
       selfClosing: true,
       dismissible: true,
       ...params
     });
 
     alert.instance.closeEm.subscribe(() => {
-      this.dom.removeComponentFromBody(alert);
+      this.dom.removeComponent(alert);
     })
 
     return alert;

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ValidationErrors, AbstractControl, ValidatorFn } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, ValidationErrors, NgForm } from '@angular/forms';
 import { AngularTokenService } from 'angular-token';
+import { AlertsService } from 'src/app/services/alerts/alerts.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,12 +10,15 @@ import { AngularTokenService } from 'angular-token';
 })
 export class SignUpComponent implements OnInit {
 
+  @ViewChild('signUpFormRef') signUpFormRef: NgForm
+  @ViewChild('submitButton') submitButton: ElementRef
+
   signUpForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
-    private tokenService: AngularTokenService
+    private tokenService: AngularTokenService,
+    private alertService: AlertsService
   ) { }
 
   ngOnInit(): void {
@@ -47,7 +50,14 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.signUpForm.valid) { return; }
+    if (this.signUpForm.invalid) {
+      this.emailCtrl.markAsTouched();
+      this.passwordCtrl.markAsTouched();
+      this.confirmPasswordCtrl.markAsTouched();
+      return;
+    }
+
+    this.submitButton.nativeElement.setAttribute('disabled', true);
 
     this.tokenService.registerAccount({
       login: this.emailCtrl.value,
@@ -55,10 +65,20 @@ export class SignUpComponent implements OnInit {
       passwordConfirmation: this.confirmPasswordCtrl.value
     }).subscribe(
       res => {
-        console.log(res)
-        this.router.navigate(['/shops'])
+        this.alertService.showAlertSuccess(`
+          A confirmation email was sent to your account at ${res.data.email}.
+          You must follow the instructions in the email before your account can be activated`,
+          {
+            selfClosing: false
+          }
+        );
+        this.signUpFormRef.reset();
+        this.submitButton.nativeElement.removeAttribute('disabled');
       },
-      error => console.log(error)
+      err => {
+        this.alertService.showAlertDanger(err.error.errors[0]);
+        this.submitButton.nativeElement.removeAttribute('disabled');
+      }
     );
   }
 }
