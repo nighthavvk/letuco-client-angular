@@ -121,6 +121,10 @@
               "devServerTarget": "letuco-client-angular:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
