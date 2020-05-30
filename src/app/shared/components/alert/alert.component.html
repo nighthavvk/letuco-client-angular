@@ -1,0 +1,9 @@
+<div class="let-alert"
+  *ngIf="!closed">
+  <ngb-alert
+    [dismissible]="dismissible"
+    [type]="type"
+    (close)="closed = true">
+    {{ text }}
+  </ngb-alert>
+</div>

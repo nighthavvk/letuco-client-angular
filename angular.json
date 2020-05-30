@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "letuco-client-angular"
+    }
+  },
+  "defaultProject": "letuco-client-angular",
+  "cli": {
+    "analytics": false
+  }
 }

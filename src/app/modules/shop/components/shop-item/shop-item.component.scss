@@ -1,0 +1,17 @@
+$namespace: '.shop-item';
+
+#{$namespace} {
+  align-items: center;
+  display: flex;
+
+  #{$namespace}__img {
+    $size: 30px;
+
+    background-color: rgba(#000, .4);
+    border-radius: 50%;
+    height: $size;
+    margin-right: 10px;
+    overflow: hidden;
+    width: $size;
+  }
+}

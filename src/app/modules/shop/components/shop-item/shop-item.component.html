@@ -1,0 +1,17 @@
+<div class="shop-item">
+  <div class="shop-item__img"></div>
+  <div class="shop-item__block">
+    <div *ngIf="isEditing; then form else link"></div>
+    <ng-template #link>
+      <a class="shop-item__link" [routerLink]="['/shops', shop?.id]">{{ shop.name }}</a>
+      <!-- <button class="shop-item__link-button" (click)="isEditing = true">Edit</button> -->
+    </ng-template>
+    <ng-template #form>
+      <form [formGroup]="shopForm" class="shop-item__form" (ngSubmit)="onSubmit()">
+        <input formControlName="name" type="text" class="form-control">
+        <button class="shop-item__form-button" type="button" (click)="isEditing = false">Cancel</button>
+        <button class="shop-item__form-button">Submit</button>
+      </form>
+    </ng-template>
+  </div>
+</div>

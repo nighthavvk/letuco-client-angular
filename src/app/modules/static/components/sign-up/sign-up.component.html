@@ -1,0 +1,13 @@
+<div class="text-center">
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input formControlName="email" type="email" id="inputEmail" class="form-control email" placeholder="Email address">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input formControlName="password" type="password" id="inputPassword" class="form-control password" placeholder="Password">
+    <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
+    <input formControlName="confirmPassword" type="password" id="inputConfirmPassword" class="form-control confirm-password" placeholder="Confirm Password">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    <p class="mt-5 mb-3 text-muted">© 2020</p>
+  </form>
+</div>
