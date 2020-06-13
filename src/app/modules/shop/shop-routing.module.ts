@@ -12,6 +12,7 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderCreateComponent } from './components/order-create/order-create.component';
 import { СustomersComponent } from './components/customers/customers.component';
+import { AccountComponent } from './components/account/account.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,8 @@ const routes: Routes = [
       { path: 'products/edit/:id', component: ProductEditComponent },
       { path: 'orders', component: OrdersComponent },
       { path: 'orders/create', component: OrderCreateComponent },
-      { path: 'customers', component: СustomersComponent }
+      { path: 'customers', component: СustomersComponent },
+      { path: 'account', component: AccountComponent }
     ]
   }
 ];

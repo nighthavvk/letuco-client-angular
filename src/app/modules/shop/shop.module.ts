@@ -7,7 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 
 import { ShopRoutingModule } from './shop-routing.module';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 import { ShopsComponent } from './components/shops/shops.component';
 import { ShopItemComponent } from './components/shop-item/shop-item.component';
@@ -21,6 +21,7 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { OrderCreateComponent } from './components/order-create/order-create.component';
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { СustomersComponent } from './components/customers/customers.component';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { СustomersComponent } from './components/customers/customers.component'
     OrdersComponent,
     OrderCreateComponent,
     OrderFormComponent,
-    СustomersComponent
+    СustomersComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

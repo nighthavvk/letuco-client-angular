@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+
 import { OrdersService } from '../../services/orders/orders.service';
-import { AlertsService } from 'src/app/services/alerts/alerts.service';
+import { AlertsService } from '../../../../services/alerts/alerts.service';
 
 @Component({
   selector: 'app-orders',

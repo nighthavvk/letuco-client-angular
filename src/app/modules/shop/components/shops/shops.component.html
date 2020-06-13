@@ -23,7 +23,10 @@
       </div>
       <ul class="shops__list">
         <li class="shops__list-item">
-          <app-shop-item [isEditing]="true"></app-shop-item>
+          <app-shop-item
+            [isEditing]="true"
+            (save)="onShopSave($event)">
+          </app-shop-item>
         </li>
       </ul>
     </ng-template>

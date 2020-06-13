@@ -1,0 +1,111 @@
+<div class="account">
+  <div class="row">
+    <div class="offset-md-2 col-md-8">
+      <div class="account__title">
+        <h4>Account</h4>
+      </div>
+
+      <hr>
+
+      <h5>Invite seller</h5>
+      <form #sellerInviteFormRef="ngForm" [formGroup]="sellerInviteForm" (ngSubmit)="onSellerInviteSubmit()">
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="email">Email</label>
+            <input
+              formControlName="email"
+              type="email"
+              id="email"
+              class="form-control"
+              [class]="{ 'is-invalid': emailCtrl.invalid && emailCtrl.touched }">
+            <div *ngIf="emailCtrl.invalid && emailCtrl.touched" class="invalid-feedback">
+              <div *ngIf="emailCtrl.hasError('required')">
+                This field is required.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button #sellerInviteSubmitButton class="btn btn-lg btn-primary btn-block" type="submit">Send invite</button>
+      </form>
+
+      <hr>
+
+      <h5>Update Password</h5>
+      <form #updatePasswordFormRef="ngForm" [formGroup]="updatePasswordForm" (ngSubmit)="onUpdatePasswordSubmit()">
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="inputCurrentPassword">Current password</label>
+            <input
+              formControlName="passwordCurrent"
+              type="password"
+              id="inputCurrentPassword"
+              class="form-control"
+              [class]="{ 'is-invalid': passwordCurrentCtrl.invalid && passwordCurrentCtrl.touched }">
+            <div *ngIf="passwordCurrentCtrl.invalid && passwordCurrentCtrl.touched" class="invalid-feedback">
+              <div *ngIf="passwordCurrentCtrl.hasError('required')">
+                This field is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="inputPassword">Password</label>
+            <input
+              formControlName="password"
+              type="password"
+              id="inputPassword"
+              class="form-control"
+              [class]="{ 'is-invalid': passwordCtrl.invalid && passwordCtrl.touched }">
+            <div *ngIf="passwordCtrl.invalid && passwordCtrl.touched" class="invalid-feedback">
+              <div *ngIf="passwordCtrl.hasError('required')">
+                This field is required.
+              </div>
+              <div *ngIf="passwordCtrl.hasError('minlength')">
+                Password is too short (minimum is {{ passwordCtrl.errors.minlength.requiredLength }} characters).
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="inputConfirmPassword">Password confirmation</label>
+            <input
+              formControlName="confirmPassword"
+              type="password"
+              id="inputConfirmPassword"
+              class="form-control"
+              [class]="{ 'is-invalid': (confirmPasswordCtrl.invalid && confirmPasswordCtrl.touched) || (confirmPasswordCtrl.touched && updatePasswordForm.invalid) }">
+            <div *ngIf="(confirmPasswordCtrl.invalid && confirmPasswordCtrl.touched) || (confirmPasswordCtrl.touched && updatePasswordForm.invalid)" class="invalid-feedback">
+              <div *ngIf="confirmPasswordCtrl.hasError('required')">
+                This field is required.
+              </div>
+              <div *ngIf="updatePasswordForm.hasError('passwordValidator')">
+                Passwords must match.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button #updatePasswordSubmitButton class="btn btn-lg btn-primary btn-block" type="submit">Update password</button>
+      </form>
+
+      <hr>
+
+      <h5>Danger zone</h5>
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <p>Type "Delete my account" to enable delete button</p>
+          <input class="form-control" #deleteAccountInput type="text" (keyup)="0">
+        </div>
+      </div>
+      <button
+        class="btn btn-danger"
+        [disabled]="deleteAccountInput.value !== 'Delete my account'"
+        (click)="deleteAccount()">
+        Delete account
+      </button>
+    </div>
+  </div>
+</div>

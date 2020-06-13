@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { ShopsService } from '../../services/shops/shops.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -12,7 +11,9 @@ export class ShopItemComponent implements OnInit {
   @Input() shop;
   @Input() isEditing: boolean = false;
 
-  @Output() save = new EventEmitter();
+  @Output() save: EventEmitter<any> = new EventEmitter();
+
+  @ViewChild('submitButton') submitButton: ElementRef
 
   public shopForm: FormGroup;
 
@@ -38,13 +39,21 @@ export class ShopItemComponent implements OnInit {
   onSubmit() {
     if (!this.shopForm.valid) { return; }
 
-    this.shopsService.createShop({ name: this.nameCtrl.value })
+    if (!this.shop) {
+      this.submitButton.nativeElement.setAttribute('disabled', true);
+
+      this.shopsService.createShop({ name: this.nameCtrl.value })
       .subscribe(
-        res => {
-          console.log(res)
-          this.save.emit(res);
+        (res: any) => {
+          debugger;
+          this.save.emit([res]);
+          this.submitButton.nativeElement.removeAttribute('disabled');
         },
-        err => console.log(err)
+        err => {
+          console.log(err)
+          this.submitButton.nativeElement.removeAttribute('disabled');
+        }
       );
+    }
   }
 }

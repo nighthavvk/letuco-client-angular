@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertsService } from 'src/app/services/alerts/alerts.service';
 
 @Component({
   selector: 'app-static',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaticComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private alertService: AlertsService
+  ) { }
 
   ngOnInit(): void {
+    if (history.state.data && history.state.data.alertMessage) {
+      this.alertService.showAlertSuccess(history.state.data.alertMessage)
+    }
   }
-
 }

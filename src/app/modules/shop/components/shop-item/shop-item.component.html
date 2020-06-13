@@ -9,8 +9,8 @@
     <ng-template #form>
       <form [formGroup]="shopForm" class="shop-item__form" (ngSubmit)="onSubmit()">
         <input formControlName="name" type="text" class="form-control">
-        <button class="shop-item__form-button" type="button" (click)="isEditing = false">Cancel</button>
-        <button class="shop-item__form-button">Submit</button>
+        <button class="shop-item__form-button btn btn-warning" type="button" (click)="isEditing = false">Cancel</button>
+        <button #submitButton class="shop-item__form-button btn btn-secondary">Submit</button>
       </form>
     </ng-template>
   </div>

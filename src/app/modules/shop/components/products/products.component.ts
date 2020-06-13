@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AlertsService } from 'src/app/services/alerts/alerts.service';
+
+import { AlertsService } from '../../../../services/alerts/alerts.service';
 import { ProductsService } from '../../services/products/products.service';
 
 @Component({
@@ -16,11 +17,17 @@ export class ProductsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productsService: ProductsService,
+    private alertsService :AlertsService
   ) { }
 
   ngOnInit(): void {
     this.route.parent.params.subscribe((params) => {
-      this.products$ = this.productsService.getProducts(+params['id'])
+      this.products$ = this.productsService.getProducts(+params['id']);
+      this.products$.subscribe({
+        error: (err) => {
+          this.alertsService.showAlertDanger(err.error.errors[0])
+        }
+      })
     })
   }
 }

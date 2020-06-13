@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../../../../services/authentication/authentication.service';
-import { AlertsService } from 'src/app/services/alerts/alerts.service';
+import { AlertsService } from '../../../../services/alerts/alerts.service';
 
 @Component({
   selector: 'app-sign-in',

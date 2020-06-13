@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidationErrors, NgForm } from '@angular/forms';
 import { AngularTokenService } from 'angular-token';
-import { AlertsService } from 'src/app/services/alerts/alerts.service';
+
+import { AlertsService } from '../../../../services/alerts/alerts.service';
 
 @Component({
   selector: 'app-sign-up',

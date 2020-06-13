@@ -5,13 +5,22 @@ $namespace: '.shop-item';
   display: flex;
 
   #{$namespace}__img {
-    $size: 30px;
+    $size: 38px;
 
     background-color: rgba(#000, .4);
     border-radius: 50%;
+    flex: none;
     height: $size;
     margin-right: 10px;
     overflow: hidden;
     width: $size;
+  }
+
+  #{$namespace}__form {
+    display: flex;
+  }
+
+  #{$namespace}__form-button {
+    margin-left: 10px;
   }
 }

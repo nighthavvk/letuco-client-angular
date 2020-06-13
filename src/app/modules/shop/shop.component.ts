@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-shop',
@@ -17,8 +17,8 @@ export class ShopComponent {
 
   public signOut() {
     this.authService.signOut().subscribe(
-      res => this.router.navigate(['']),
-      error => this.router.navigate([''])
+      res => this.router.navigate(['/']),
+      error => this.router.navigate(['/'])
     );
   }
 }
