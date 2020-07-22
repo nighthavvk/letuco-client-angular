@@ -1,0 +1,8 @@
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="customer-form">
+    <div class="customer-form__input-group">
+      <label for="inputName" class="sr-only">Name</label>
+      <input formControlName="name" type="text" id="inputName" class="form-control" placeholder="Customer name">
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+  

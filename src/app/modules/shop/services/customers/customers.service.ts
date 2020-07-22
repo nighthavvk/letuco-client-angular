@@ -19,4 +19,8 @@ export class CustomersService {
   getCustomers(shopId: number): Observable<any> {
     return this.http.get(`/api/v1/accounts/${this.accountId}/customers`);
   }
+
+  createCustomer(data: any): Observable<any> {
+    return this.http.post(`/api/v1/accounts/${this.accountId}/customers`, data);
+  }
 }

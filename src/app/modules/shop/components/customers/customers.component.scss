@@ -1,3 +1,35 @@
-.customers {
+$namespace: '.customers';
+
+#{$namespace} {
   padding-top: 30px;
+
+  #{$namespace}__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+  }
+
+  #{$namespace}__list-item {
+    align-items: center;
+    display: flex;
+
+    + #{$namespace}__list-item {
+      margin-top: 10px;
+    }
+  }
+
+  #{$namespace}__list-item-img {
+    $size: 30px;
+
+    background-color: rgba(#000, .4);
+    border-radius: 50%;
+    height: $size;
+    margin-right: 10px;
+    overflow: hidden;
+    width: $size;
+  }
+
+  #{$namespace}__list-item-name {
+    flex: 1 1 auto;
+  }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
 import { AngularTokenService } from 'angular-token';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
@@ -27,7 +28,7 @@ export class AuthenticationService {
   }
 
   signOut(): Observable<any> {
-    const signOut$ = this.tokenService.signOut();
+    const signOut$ = this.tokenService.signOut().pipe(share());
 
     signOut$.subscribe(() => {
       this.localStorage.removeItem('accountId');

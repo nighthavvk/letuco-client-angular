@@ -21,6 +21,8 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { OrderCreateComponent } from './components/order-create/order-create.component';
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { СustomersComponent } from './components/customers/customers.component';
+import { CustomerCreateComponent } from './components/customer-create/customer-create.component';
+import { CustomerFormComponent } from './components/customer-form/customer-form.component';
 import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
@@ -37,6 +39,8 @@ import { AccountComponent } from './components/account/account.component';
     OrderCreateComponent,
     OrderFormComponent,
     СustomersComponent,
+    CustomerCreateComponent,
+    CustomerFormComponent,
     AccountComponent
   ],
   imports: [
