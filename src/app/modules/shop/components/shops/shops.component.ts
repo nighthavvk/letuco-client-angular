@@ -20,12 +20,11 @@ export class ShopsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this
     this.shopsService.getShops()
       .subscribe((res: any) => {
         this.shops.concat(res);
-        this.shops$.next(res)
-      })
+        this.shops$.next(res);
+      });
   }
 
   onAddNewShopClick() {

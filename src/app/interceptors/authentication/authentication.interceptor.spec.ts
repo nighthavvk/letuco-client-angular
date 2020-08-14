@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { AuthenticationInterceptor } from './authentication.interceptor';
 import { AuthenticationService } from '../../services/authentication/authentication.service';
 
-fdescribe('AuthenticationInterceptor', () => {
+describe('AuthenticationInterceptor', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({

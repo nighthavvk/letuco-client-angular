@@ -27,15 +27,15 @@ export class ProductEditComponent implements OnInit {
     const params$ = this.route.params;
     const parentParams$ =  this.route.parent.params;
 
-    combineLatest(params$, parentParams$)
+    combineLatest([params$, parentParams$])
       .subscribe(([params, parentParams]) => {
         if (params.id && parentParams.id) {
-          this.shopId = +parentParams['id'];
-          this.productId = +params['id'];
+          this.shopId = +parentParams.id;
+          this.productId = +params.id;
 
           this.productsService.getProducts(this.shopId)
             .subscribe(
-              (res: any)=> {
+              (res: any) => {
                 const product = res.find(prod => prod.id === this.productId);
                 this.product$.next(product);
               },
@@ -43,7 +43,7 @@ export class ProductEditComponent implements OnInit {
                 this.alertService.showAlertDanger(err.error.errors[0]);
               });
         }
-      })
+      });
   }
 
   onSubmit(data) {
@@ -57,6 +57,6 @@ export class ProductEditComponent implements OnInit {
       err => {
         this.alertService.showAlertDanger(err.error.errors[0]);
       }
-    )
+    );
   }
 }

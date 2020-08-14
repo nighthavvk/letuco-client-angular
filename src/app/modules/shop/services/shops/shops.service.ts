@@ -18,7 +18,7 @@ export class ShopsService {
     return this.http.get(`/api/v1/accounts/${this.accountId}/shops`);
   }
 
-  createShop(data: any) {
+  createShop(data: { name: string }) {
     return this.http.post(`/api/v1/accounts/${this.accountId}/shops`, data);
   }
 }

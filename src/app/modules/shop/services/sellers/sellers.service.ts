@@ -10,7 +10,7 @@ export class SellersService {
     private http: HttpClient
   ) { }
 
-  getShops(data) {
-    return this.http.post(`/api/v1/sellers/invite`, data);
+  invite(data: { email: string, name?: string }) {
+    return this.http.post('/api/v1/sellers/invite', data);
   }
 }

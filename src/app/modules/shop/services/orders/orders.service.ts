@@ -9,7 +9,7 @@ import { LocalStorageService } from '../../../../services/local-storage/local-st
 })
 export class OrdersService {
 
-  private accountId = parseInt(this.localStorage.getItem('accountId'))
+  private accountId: number = parseInt(this.localStorage.getItem('accountId'))
 
   constructor(
     private http: HttpClient,

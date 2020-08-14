@@ -66,7 +66,6 @@ export class AccountComponent implements OnInit {
   }
 
   onSellerInviteSubmit() {
-    debugger;
     if (this.sellerInviteForm.invalid) {
       this.emailCtrl.markAsTouched();
       return;
@@ -78,7 +77,7 @@ export class AccountComponent implements OnInit {
   }
 
   inviteSeller() {
-    this.sellersService.getShops({
+    this.sellersService.invite({
       email: this.emailCtrl.value
     }).subscribe(
       (res: any) => {

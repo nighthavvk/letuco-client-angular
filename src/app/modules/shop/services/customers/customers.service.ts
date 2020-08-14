@@ -20,7 +20,7 @@ export class CustomersService {
     return this.http.get(`/api/v1/accounts/${this.accountId}/customers`);
   }
 
-  createCustomer(data: any): Observable<any> {
+  createCustomer(data: { name: string }): Observable<any> {
     return this.http.post(`/api/v1/accounts/${this.accountId}/customers`, data);
   }
 }
