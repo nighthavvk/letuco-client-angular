@@ -1,0 +1,24 @@
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="order-form">
+    <div class="order-form__input-group">
+      <label for="inputStatus">Status</label>
+      <input formControlName="status" type="text" id="inputStatus" class="form-control" placeholder="Status">
+    </div>
+    <div class="order-form__input-group">
+      <label for="selectCustomer">Customer</label>
+      <select formControlName="customerId" id="selectCustomer" class="form-control">
+        <option
+          *ngFor="let customer of customers$ | async; first as isFirst"
+          [value]="customer.id"
+          [selected]="isFirst">
+          {{ customer.name }}
+        </option>
+      </select>
+    </div>
+    <div class="order-form__input-group">
+      <label for="selectProducts">Products</label>
+      <select formControlName="products" id="selectProducts" class="form-control" multiple>
+        <option *ngFor="let product of products$ | async" [value]="product.id">{{ product.name }}</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>

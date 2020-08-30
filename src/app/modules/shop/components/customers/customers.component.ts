@@ -15,13 +15,12 @@ export class СustomersComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private customersService: CustomersService,
-    private alertsService: AlertsService
+    private customersService: CustomersService
   ) { }
 
   ngOnInit(): void {
-    this.route.parent.params.subscribe((params) => {
-      this.customers$ = this.customersService.getCustomers(+params['id'])
-    })
+    this.route.parent.params.subscribe(() => {
+      this.customers$ = this.customersService.getCustomers();
+    });
   }
 }

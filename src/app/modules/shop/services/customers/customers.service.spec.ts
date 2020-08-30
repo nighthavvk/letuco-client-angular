@@ -50,7 +50,7 @@ describe('CustomersService', () => {
 
   it('should get customers', () => {
 
-    service.getCustomers(shopId)
+    service.getCustomers()
       .subscribe((data) => {
         expect(data).toEqual(dataStub);
       });

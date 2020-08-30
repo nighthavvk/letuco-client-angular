@@ -1,5 +1,16 @@
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
+.toolbar-select {
+  color: #495057;
+  display: flex;
+  position: relative;
+
+  .feather {
+    left: 5px;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+  }
+
+  select {
+    padding-left: 30px;
+  }
 }

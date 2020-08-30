@@ -16,7 +16,7 @@
       <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
       <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
     </div>
-    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+    <div class="toolbar-select">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         class="feather feather-calendar">
@@ -25,12 +25,15 @@
         <line x1="8" y1="2" x2="8" y2="6"></line>
         <line x1="3" y1="10" x2="21" y2="10"></line>
       </svg>
-      This week
-    </button>
+      <select class="form-control" (change)="onDateRangeChange($event.target.value)">
+        <option value="week">Week</option>
+        <option value="month">Month</option>
+      </select>
+    </div>
   </div>
 </div>
 
-<div style="display: block;">
+<div *ngIf="lineChartData" style="display: block;">
   <canvas baseChart width="400" height="200"
     [datasets]="lineChartData"
     [labels]="lineChartLabels"
@@ -38,9 +41,8 @@
     [colors]="lineChartColors"
     [legend]="lineChartLegend"
     [chartType]="lineChartType"
-    [plugins]="lineChartPlugins"
-    (chartHover)="chartHovered($event)"
-    (chartClick)="chartClicked($event)"></canvas>
+    [plugins]="lineChartPlugins">
+  </canvas>
 </div>
 
 <!--

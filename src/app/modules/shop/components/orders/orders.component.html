@@ -10,7 +10,14 @@
 
       <ul class="orders__list">
         <li class="orders__list-item" *ngFor="let order of orders">
-
+          <div><span>Status:</span> {{ order.status }}</div>
+          <div><span>Customer:</span> {{ order.customer.name }}</div>
+          <div><span>Products:</span></div>
+          <ul>
+            <li *ngFor="let product of order.products">
+              {{ product.name }}
+            </li>
+          </ul>
         </li>
       </ul>
 

@@ -16,7 +16,7 @@ export class CustomersService {
     private localStorage: LocalStorageService,
   ) { }
 
-  getCustomers(shopId: number): Observable<any> {
+  getCustomers(): Observable<any> {
     return this.http.get(`/api/v1/accounts/${this.accountId}/customers`);
   }
 

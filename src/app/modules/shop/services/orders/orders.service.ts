@@ -19,4 +19,8 @@ export class OrdersService {
   getOrders(shopId: number): Observable<any> {
     return this.http.get(`/api/v1/accounts/${this.accountId}/shops/${shopId}/orders`);
   }
+
+  createOrder(shopId: number, data: any): Observable<any> {
+    return this.http.post(`/api/v1/accounts/${this.accountId}/shops/${shopId}/orders`, data);
+  }
 }
