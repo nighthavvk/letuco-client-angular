@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertsService } from '../../../../services/alerts/alerts.service';
-import { CustomersService } from '../../services/customers/customers.service';
 import { OrdersService } from '../../services/orders/orders.service';
+import { GoogleAnalyticsService } from '../../../../services/google-analytics/google-analytics.service';
 
 @Component({
   selector: 'app-order-create',
@@ -17,7 +17,8 @@ export class OrderCreateComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private alertService: AlertsService,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private googleAnalyticsService: GoogleAnalyticsService
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +37,7 @@ export class OrderCreateComponent implements OnInit {
     })
     .subscribe(
       res => {
+        this.googleAnalyticsService.eventEmitter('order_create', 'order', 'create', 'click', 10);
         this.router.navigate(['shops', this.shopId, 'orders']);
       },
       err => {

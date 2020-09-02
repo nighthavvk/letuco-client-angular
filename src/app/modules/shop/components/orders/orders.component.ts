@@ -23,6 +23,6 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
     this.route.parent.params.subscribe((params) => {
       this.orders$ = this.ordersService.getOrders(+params['id'])
-    })
+    });
   }
 }
